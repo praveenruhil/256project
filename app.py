@@ -6,7 +6,6 @@ import sklearn
 import requests
 import json
 
-sklearn.__version__
 
 app = Flask(__name__)
 model = pickle.load(open('newsvm.pkl', 'rb'))
