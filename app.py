@@ -1,9 +1,12 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
+import os
+import sklearn
+sklearn.__version__
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
+model = pickle.load(open('newsvm.pkl', 'rb'))
 
 @app.route('/')
 def home():
@@ -14,7 +17,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    int_features = [int(x) for x in request.form.values()]
+    int_features = [float(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
 
