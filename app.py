@@ -3,6 +3,9 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import os
 import sklearn
+import requests
+import json
+
 sklearn.__version__
 
 app = Flask(__name__)
@@ -32,8 +35,7 @@ def predict_api():
     '''
     data = request.get_json(force=True)
     prediction = model.predict([np.array(list(data.values()))])
-
-    output = prediction[0]
+    output = "YES" if prediction==1 else "NO" 
     return jsonify(output)
 
 if __name__ == "__main__":
