@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import requests
 import json
+import sklearn
 
 
 app = Flask(__name__)
